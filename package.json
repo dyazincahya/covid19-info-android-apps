@@ -1,0 +1,25 @@
+{
+  "nativescript": {
+    "id": "com.kang.cahya.infocorona",
+    "tns-android": {
+      "version": "6.4.1"
+    },
+    "tns-ios": {
+      "version": "6.4.0"
+    }
+  },
+  "description": "Apps COVID-19 Report World Wide",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "dependencies": {
+    "@nativescript/theme": "~2.3.0",
+    "@nstudio/nativescript-loading-indicator": "^3.0.4",
+    "tns-core-modules": "~6.4.0"
+  },
+  "devDependencies": {
+    "nativescript-dev-webpack": "~1.5.0"
+  },
+  "gitHead": "d8bdf0799a219051f28f8abd7c258d2bf2fce6e1",
+  "readme": "NativeScript Application",
+  "author": "kang cahya"
+}

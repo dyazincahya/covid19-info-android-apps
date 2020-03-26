@@ -1,0 +1,106 @@
+﻿@import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/ruby.css";
+
+.l-title {
+	font-size: 24;
+	font-weight: bold;
+}
+
+.l-confirm {
+	font-size: 15;
+	color: #e53935;
+	margin-left: 5;
+	font-weight: bold;
+}
+
+.l-recovered {
+	font-size: 15;
+	color: #ffffff;
+	background: #2E7D32;
+	padding-left: 7;
+	padding-right: 7;
+	padding-top: 3;
+	padding-bottom: 3;
+	border-radius: 5; 
+	margin-right: 5;
+}
+
+.l-deaths {
+	font-size: 15;
+	color: #ffffff;
+	background: #6A1B9A;
+	padding-left: 7;
+	padding-right: 7;
+	padding-top: 3;
+	padding-bottom: 3;
+	border-radius: 5; 
+	margin-right: 5;
+}
+
+.l-las-update {
+	font-size: 15;
+	color: #9E9E9E;
+	margin-left: 5;
+	font-style: italic;
+}
+
+.b-title {
+	margin-left: 10;
+	margin-top: 15;
+	margin-bottom: 10;
+	font-size: 13;
+	color: #9E9E9E;
+	font-weight: bold;
+}
+
+.b-lastupdate {
+	font-size: 13;
+	margin-left: 10;
+	margin-right: 10;
+	color: #BDBDBD;
+	text-align: right;
+}
+
+.b-versionapps {
+	font-size: 13;
+	margin-left: 10;
+	margin-right: 10;
+	margin-bottom: 8;
+	color: #616161;
+	text-align: center;
+}
+
+.b-developer {
+	font-size: 15;
+	margin-left: 10;
+	margin-right: 10;
+	color: #BDBDBD;
+	text-align: center;
+}
+
+.b-confirm {
+	font-size: 15;
+	background: #e53935;
+	text-align: center;
+	padding: 10;
+	color: #ffffff;
+}
+
+.b-recovered {
+	font-size: 15;
+	background: #2E7D32;
+	text-align: center;
+	padding: 10;
+	color: #ffffff;
+}
+
+.b-deaths {
+	font-size: 15;
+	background: #6A1B9A;
+	text-align: center;
+	padding: 10;
+	color: #ffffff;
+}
+
+/* Place any CSS rules you want to apply on both iOS and Android here.
+This is where the vast majority of your CSS code goes. */
