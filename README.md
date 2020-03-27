@@ -1,4 +1,4 @@
-<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/logo.png" width="100">
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/logo.png" width="75">
 
 # COVID-19 Info Android Apps
 
