@@ -22,6 +22,10 @@
 - Nativescript v6.4.1
 
 ### How to run?
+First install all dependecies in ```package.json``` with run this command
+``` bash
+npm install
+```
 #### andorid
 ``` bash
 tns run android
@@ -32,6 +36,10 @@ tns run ios
 ```
 
 ### How to build?
+First install all dependecies in ```package.json``` with run this command
+``` bash
+npm install
+```
 #### andorid
 ``` bash
 tns build android
