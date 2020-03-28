@@ -1,4 +1,3 @@
-const toastModule = require("nativescript-toast");
 const timerModule = require("tns-core-modules/timer");
 const LoadingIndicatorModule = require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
 const xLoading = new LoadingIndicatorModule();
