@@ -11,7 +11,7 @@
 - Local Report (Indonesia)
 
 ### Data Source
-[kawalcorona.com](https://kawalcorona.com)
+[kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
 
 ### Screenshot
 <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/6.png" width="200">
