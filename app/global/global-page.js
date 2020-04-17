@@ -26,24 +26,39 @@ function fd(ts){
 	return formattedTime;
 }
  
-function getAllData(){
+function fetchAllData(){
     GetModel.global().then(function (result){
         if(result){
             if(result.length > 0){
             	var el = [];
             	for (var i = 0; i < result.length; i++) {
-            		el.push({
-            			OBJECTID : result[i].attributes.OBJECTID,
-            			Country_Region : result[i].attributes.Country_Region,
-            			Last_Update : fd(result[i].attributes.Last_Update),
-            			Lat : result[i].attributes.Lat,
-            			Long_ : result[i].attributes.Long_,
-            			Confirmed : fn(result[i].attributes.Confirmed),
-            			Deaths : fn(result[i].attributes.Deaths),
-            			Recovered : fn(result[i].attributes.Recovered),
-            			Active : fn(result[i].attributes.Active),
-            		});
-            	}
+                    if(result[i].attributes.Country_Region.toUpperCase() == "INDONESIA"){
+                        el.push({
+                            OBJECTID : result[i].attributes.OBJECTID,
+                            Country_Region : result[i].attributes.Country_Region,
+                            Last_Update : fd(result[i].attributes.Last_Update),
+                            Lat : -4.144909999999999,
+                            Long_ : 122.17460499999993,
+                            Confirmed : fn(result[i].attributes.Confirmed),
+                            Deaths : fn(result[i].attributes.Deaths),
+                            Recovered : fn(result[i].attributes.Recovered),
+                            Active : fn(result[i].attributes.Active)
+                        });
+            		} else {
+                        el.push({
+                            OBJECTID : result[i].attributes.OBJECTID,
+                            Country_Region : result[i].attributes.Country_Region,
+                            Last_Update : fd(result[i].attributes.Last_Update),
+                            Lat : result[i].attributes.Lat,
+                            Long_ : result[i].attributes.Long_,
+                            Confirmed : fn(result[i].attributes.Confirmed),
+                            Deaths : fn(result[i].attributes.Deaths),
+                            Recovered : fn(result[i].attributes.Recovered),
+                            Active : fn(result[i].attributes.Active)
+                        }); 
+                    }
+                }
+                gAllGlobal = el;
                 context.set("items", el);
                 xLoading.hide();
             } else {
@@ -54,6 +69,13 @@ function getAllData(){
         }
         xLoading.hide();
     });
+}
+
+function getAllData(){
+    timerModule.setTimeout(function () {
+        context.set("items", gAllGlobal);
+        xLoading.hide();
+    }, gConfig.timeloader);
 }
 
 exports.onLoaded = function(args) {
@@ -73,12 +95,10 @@ exports.onNavigatingTo = function(args) {
     context = GetModel;
 
     xLoading.show(gConfig.loadingOption);
-    timerModule.setTimeout(function () {
-        getAllData();
-    }, gConfig.timeloader);
+    getAllData()
 
     page.bindingContext = context;
-};
+}; 
 
 exports.onSubmit = function(args){
 	let master_data = context.items;
@@ -102,9 +122,23 @@ exports.onClear = function(){
     }
 };
 
+exports.onItemTap=function(args){
+    let itemTap = args.view;
+    let itemTapData = itemTap.bindingContext;
+
+    framePage.navigate({
+        moduleName: "maps/maps-page",
+        animated: true,
+        context: { lat: itemTapData.Lat, long: itemTapData.Long_ },
+        transition: {
+            name: "fade"
+        }
+    });
+};
+ 
 exports.onRefresh = function(){
-	xLoading.show(gConfig.loadingOption);
-	getAllData();
+	xLoading.show(gConfig.fetchingOption);
+	fetchAllData();
 };
 
 exports.onBoard = function(){
@@ -115,7 +149,7 @@ exports.onBoard = function(){
             name: "fade"
         }
     });
-}
+};
 
 exports.onLocal = function(){
 	framePage.navigate({
@@ -125,4 +159,14 @@ exports.onLocal = function(){
             name: "fade"
         }
     });
-}
+};
+
+exports.onMaps = function(){
+    framePage.navigate({
+        moduleName: "maps/maps-page",
+        animated: true,
+        transition: {
+            name: "fade"
+        }
+    });
+};

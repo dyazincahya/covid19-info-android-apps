@@ -18,6 +18,7 @@
                     <Label text="{{ Provinsi }}" class="l-title" />
                     <Label text="{{ 'Positive ' + Kasus_Posi }}" class="l-confirm" />
                     <StackLayout orientation="horizontal" marginLeft="0">
+	                    <Label text="{{ 'Recovery ' + Kasus_akti }}" class="l-recovery" />
 	                    <Label text="{{ 'Recovered ' + Kasus_Semb }}" class="l-recovered" />
 	                    <Label text="{{ 'Deaths ' + Kasus_Meni }}" class="l-deaths" />
 	                </StackLayout>

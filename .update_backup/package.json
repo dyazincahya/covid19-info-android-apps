@@ -2,10 +2,10 @@
   "nativescript": {
     "id": "com.kang.cahya.infocorona",
     "tns-ios": {
-      "version": "6.5.0"
+      "version": "6.4.0"
     },
     "tns-android": {
-      "version": "6.5.0"
+      "version": "6.4.1"
     }
   },
   "description": "Apps COVID-19 Report World Wide",
@@ -16,7 +16,7 @@
     "@nstudio/nativescript-loading-indicator": "^3.0.4",
     "nativescript-google-maps-sdk": "^2.9.1",
     "nativescript-permissions": "^1.3.8",
-    "tns-core-modules": "~6.5.0"
+    "tns-core-modules": "~6.4.0"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~1.5.0"

@@ -9,6 +9,7 @@
 - Summary Report
 - Global Report
 - Local Report (Indonesia)
+- Maps Report
 
 ### Data Source
 [kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
@@ -19,7 +20,7 @@
 ### Requirement To Install
 - NodeJS v12.16.1
 - NPM v6.14.1
-- Nativescript v6.4.1
+- Nativescript v6.5.1
 
 ### How to run?
 First install all dependecies in ```package.json``` with run this command

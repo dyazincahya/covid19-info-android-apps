@@ -1,0 +1,67 @@
+<Page
+    loaded="onLoaded" 
+    navigatingTo="onNavigatingTo"  
+    xmlns:maps="nativescript-google-maps-sdk"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label text="COVID-19 - World Wide Report Maps"></Label>
+        <ActionItem tap="onBoard" text="Home" android.position="popup" />
+        <ActionItem tap="onGlobal" text="Global Report" android.position="popup" />
+        <ActionItem tap="onLocal" text="Indonesia Report" android.position="popup" />
+    </ActionBar>
+
+    <GridLayout rows="auto,*">
+    	<!-- <maps:mapView
+            row="1"
+            latitude="{{ latitude }}"
+            longitude="{{ longitude }}"
+            zoom="{{ zoom }}"
+            bearing="{{ bearing }}" 
+            tilt="{{ tilt }}"
+            mapAnimationsEnabled="{{ mapAnimationsEnabled }}"
+            padding="{{ padding }}"
+            mapReady="onMapReady"  
+            markerSelect="onMarkerSelect"
+            markerBeginDragging="onMarkerBeginDragging"
+            markerEndDragging="onMarkerEndDragging"
+            markerDrag="onMarkerDrag"
+            cameraChanged="onCameraChanged" 
+            cameraMove="onCameraMove"
+        /> -->
+        <maps:mapView
+            row="1"
+            latitude="{{ latitude }}" longitude="{{ longitude }}"
+            zoom="{{ zoom }}" minZoom="{{ minZoom }}" maxZoom="{{ maxZoom }}"
+            tilt="{{ tilt }}" bearing="{{ bearing }}"
+            mapAnimationsEnabled="{{ mapAnimationsEnabled }}"
+            i-padding="50,50,50,50" padding="{{ padding }}"
+            mapReady="onMapReady"
+            coordinateTapped="onCoordinateTapped"
+            markerSelect="onMarkerEvent"
+            markerBeginDragging="onMarkerEvent" markerEndDragging="onMarkerEvent" markerDrag="onMarkerEvent"
+            markerInfoWindowTapped="onMarkerEvent" markerInfoWindowClosed="onMarkerEvent"
+            cameraChanged="onCameraChanged"
+            cameraMove="onCameraMove"
+            indoorBuildingFocused="onIndoorBuildingFocused"
+            indoorLevelActivated="onIndoorLevelActivated"
+        >
+            <maps:mapView.infoWindowTemplate>
+                <StackLayout orientation="vertical" width="200" height="120" >
+                    <Label text="{{title}}" className="tmv-title" width="125" textWrap="true" />
+                    <!-- <Label text="{{snippet}}" className="tmv-snippet" width="125"   /> -->
+                    <GridLayout rows="auto, auto" columns="*, *">
+                        <Label text="{{ positive }}" className="tmv-info" row="0" col="0" />
+                        <Label text="{{ recovery }}" className="tmv-info" row="0" col="1" />
+
+                        <Label text="{{ deaths }}" className="tmv-info" row="1" col="0" />
+                        <Label text="{{ recovered }}" className="tmv-info" row="1" col="1" />
+                    </GridLayout>
+                    <!-- <Label text="{{'LAT: ' + position.latitude}}" className="infoWindowCoordinates"  />
+                    <Label text="{{'LON: ' + position.longitude}}" className="infoWindowCoordinates"  /> -->
+                    <!-- <Button text="Call Center" /> -->
+                </StackLayout>
+            </maps:mapView.infoWindowTemplate>
+        </maps:mapView>
+    </GridLayout>
+</Page>

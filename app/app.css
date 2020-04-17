@@ -13,6 +13,18 @@
 	font-weight: bold;
 }
 
+.l-recovery {
+	font-size: 15;
+	color: #333333;
+	background: #FFEB3B;
+	padding-left: 7;
+	padding-right: 7;
+	padding-top: 3;
+	padding-bottom: 3;
+	border-radius: 5; 
+	margin-right: 5;
+}
+
 .l-recovered {
 	font-size: 15;
 	color: #ffffff;
@@ -86,6 +98,14 @@
 	color: #ffffff;
 }
 
+.b-recovery {
+	font-size: 15;
+	background: #FFEB3B;
+	text-align: center;
+	padding: 10;
+	color: #333333;
+}
+
 .b-recovered {
 	font-size: 15;
 	background: #2E7D32;
@@ -102,5 +122,26 @@
 	color: #ffffff;
 }
 
+/* MAPS VIEW */
+.tmv-title {
+	horizontal-align: left;
+    font-size: 15;
+    margin-bottom: 10;
+    color: #009688;
+}
+
+.tmv-snippet {
+    font-size: 13;
+    horizontal-align: left;
+    margin-bottom: 10;
+    color: #999;
+}
+
+.tmv-info {
+    horizontal-align: left;
+    margin: 0;
+    color: #999999;
+    font-size: 11;
+}
 /* Place any CSS rules you want to apply on both iOS and Android here.
 This is where the vast majority of your CSS code goes. */

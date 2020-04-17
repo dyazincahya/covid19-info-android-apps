@@ -10,21 +10,6 @@ var context, framePage;
 function fn(numb){
 	return numb.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
-
-function fd(ts){
-	var d = new Date(ts);
-
-	var hours = d.getHours(),
-		minutes = "0" + d.getMinutes(),
-		seconds = "0" + d.getSeconds(),
-		date = d.getDate(),
-		month = d.getMonth()+1,
-		year = d.getFullYear();
-
-	var formattedTime = date + '/' + month + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-	return formattedTime;
-}
  
 function getAllData(){
     GetModel.local().then(function (result){
@@ -36,9 +21,10 @@ function getAllData(){
             			FID : result[i].attributes.FID,
             			Kode_Provi : result[i].attributes.Kode_Provi,
                         Provinsi : result[i].attributes.Provinsi,
-                        Kasus_Posi : result[i].attributes.Kasus_Posi,
-                        Kasus_Semb : result[i].attributes.Kasus_Semb,
-                        Kasus_Meni : result[i].attributes.Kasus_Meni
+                        Kasus_Posi : fn(result[i].attributes.Kasus_Posi),
+                        Kasus_Semb : fn(result[i].attributes.Kasus_Semb),
+                        Kasus_Meni : fn(result[i].attributes.Kasus_Meni),
+                        Kasus_akti : fn(result[i].attributes.Kasus_Posi - (result[i].attributes.Kasus_Semb+result[i].attributes.Kasus_Meni))
             		});
             	}
                 context.set("items", el);
@@ -112,7 +98,7 @@ exports.onBoard = function(){
             name: "fade"
         }
     });
-}
+};
 
 exports.onGlobal = function(){
     framePage.navigate({
@@ -122,4 +108,4 @@ exports.onGlobal = function(){
             name: "fade"
         }
     });
-}
+};

@@ -24,6 +24,10 @@ android {
   }
 }
 
+project.ext {
+    googlePlayServicesVersion = "+"
+}
+
 def settingsGradlePath
 
 if(project.hasProperty("appResourcesPath")){

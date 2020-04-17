@@ -4,6 +4,7 @@ const ModeLoadingIndicator = require('@nstudio/nativescript-loading-indicator').
 global.gUrl = "https://api.kawalcorona.com/";
 global.gLocal = ""; 
 global.gGlobal = "";
+global.gAllGlobal = [];
 global.gConfig = {
     "timeloader"		: 100,
     "timepullrefresh"	: 1000,
@@ -19,8 +20,21 @@ global.gConfig = {
 	    android: {
 			cancelable: false,
 		}
+	},
+	"fetchingOption" 	: {
+	    message: 'Fetching data...',
+	    margin: 10,
+	    dimBackground: true,
+	    color: '#FFFFFF', 
+	    backgroundColor: '#FFFFFF',
+	    userInteractionEnabled: true,
+	    hideBezel: true,
+	    mode: ModeLoadingIndicator.Indeterminate, 
+	    android: {
+			cancelable: false,
+		}
 	}
-}; 
+};
 
 application.run({ moduleName: "app-root" });
 
