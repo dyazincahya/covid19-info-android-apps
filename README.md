@@ -2,7 +2,7 @@
 
 # COVID-19 Info Android Apps
 
-### Covid19-info.apk
+### Covid19-info.apk (latest v1.4)
 [Download](https://github.com/dyazincahya/covid19-info-android-apps/blob/master/covid19-info.apk) || [Download Mirror](https://github.com/dyazincahya/covid19-info-android-apps/raw/master/covid19-info.apk)
 
 ### Info List
