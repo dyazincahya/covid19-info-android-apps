@@ -6,6 +6,23 @@ var GetModel = new GlobalModel([]);
 
 var context, framePage, ndata, mapView = null;
 
+function zoomLevelSetting(param) {
+    switch (param.toUpperCase()) {
+        case "ITALY":
+            context.set("zoom", 10);
+            break;
+        case "ANDORRA":
+            context.set("zoom", 10);
+            break;
+        case "HOLY SEE":
+            context.set("zoom", 10);
+            break;
+    
+        default:
+            context.set("zoom", 6);
+            break;
+    }
+}
 
 function onLoaded(args) {
     const page = args.object; 
@@ -23,19 +40,24 @@ function onLoaded(args) {
 
     if(page.navigationContext){
         ndata = page.navigationContext;
-        if(ndata.lat && ndata.long){
+        if(ndata.cn && ndata.lat && ndata.long){
+            context.set("actionBarTitle", "now # " + ndata.cn.toUpperCase());
             context.set("latitude", ndata.lat);
             context.set("longitude", ndata.long);
+            zoomLevelSetting(ndata.cn.toUpperCase());
         } else {
+            context.set("actionBarTitle", "# INDONESIA");
             context.set("latitude", -4.144909999999999);
             context.set("longitude", 122.17460499999993);
+            context.set("zoom", 5);
         }
     } else {
+        context.set("actionBarTitle", "# INDONESIA");
         context.set("latitude", -4.144909999999999);
         context.set("longitude", 122.17460499999993);
+        context.set("zoom", 5);
     }
     
-    context.set("zoom", 5);
     context.set("minZoom", 0);
     context.set("maxZoom", 22);
     context.set("bearing", 360);
@@ -65,10 +87,9 @@ function onMapReady(args) {
         var marker = new mapsModule.Marker();
         marker.position = mapsModule.Position.positionFromLatLng(gAllGlobal[i].Lat, gAllGlobal[i].Long_);
         marker.title = gAllGlobal[i].Country_Region;
-        marker.snippet = gAllGlobal[i].Total + " case";
         marker.positive = "Positive : " + gAllGlobal[i].Confirmed;
         marker.recovered = "Recovered : " + gAllGlobal[i].Recovered;
-        marker.recovery = "Recovery : " + gAllGlobal[i].Active;
+        marker.recovery = "Active : " + gAllGlobal[i].Active;
         marker.deaths = "Deaths : " + gAllGlobal[i].Deaths;
         // marker.color = "green";
         marker.userData = { index : i};
@@ -76,47 +97,25 @@ function onMapReady(args) {
     }
 }
 
-function onCoordinateTapped(args) {
-    console.log("Coordinate Tapped, Lat: " + args.position.latitude + ", Lon: " + args.position.longitude, args);
+function onMarkerSelect(args) {
+    context.set("actionBarTitle", "# " + args.marker.title.toUpperCase());
 }
 
-function onMarkerEvent(args) {
-   console.log("Marker Event: '" + args.eventName
-                + "' triggered on: " + args.marker.title
-                + ", Lat: " + args.marker.position.latitude + ", Lon: " + args.marker.position.longitude, args);
+function markerInfoWindowTapped(args) {
+    framePage.navigate({
+        moduleName: "global/global-page",
+        animated: true,
+        transition: {
+            name: "fade"
+        }
+    });
 }
 
-var lastCamera = null;
-function onCameraChanged(args) {
-    console.log("Camera changed: "+JSON.stringify(args.camera), JSON.stringify(args.camera) === lastCamera);
-    lastCamera = JSON.stringify(args.camera);
-    var bounds = mapView.projection.visibleRegion.bounds;
-    console.log("Current bounds: " + JSON.stringify({
-          southwest: [bounds.southwest.latitude, bounds.southwest.longitude],
-          northeast: [bounds.northeast.latitude, bounds.northeast.longitude]
-        }));
-}
-
-function onCameraMove(args) {
-    console.log("Camera moving: "+JSON.stringify(args.camera));
-}
-
-function onIndoorBuildingFocused(args) {
-    console.log("Building focus changed: " + JSON.stringify(args.indoorBuilding));
-}
-
-function onIndoorLevelActivated(args) {
-    console.log("Indoor level changed: " + JSON.stringify(args.activateLevel)); 
-}
 
 exports.onLoaded = onLoaded;
 exports.onMapReady = onMapReady;
-exports.onCoordinateTapped = onCoordinateTapped;
-exports.onMarkerEvent = onMarkerEvent;
-exports.onCameraChanged = onCameraChanged;
-exports.onCameraMove = onCameraMove;
-exports.onIndoorBuildingFocused = onIndoorBuildingFocused;
-exports.onIndoorLevelActivated = onIndoorLevelActivated;
+exports.onMarkerSelect = onMarkerSelect;
+exports.markerInfoWindowTapped = markerInfoWindowTapped;
 
 exports.onBoard = function(){
     framePage.navigate({

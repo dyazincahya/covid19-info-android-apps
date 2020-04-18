@@ -16,11 +16,13 @@
             <ListView.itemTemplate>
                 <StackLayout>
                     <Label text="{{ Provinsi }}" class="l-title" />
-                    <Label text="{{ 'Positive ' + Kasus_Posi }}" class="l-confirm" />
                     <StackLayout orientation="horizontal" marginLeft="0">
-	                    <Label text="{{ 'Recovery ' + Kasus_akti }}" class="l-recovery" />
-	                    <Label text="{{ 'Recovered ' + Kasus_Semb }}" class="l-recovered" />
+                        <Label text="{{ 'Positive ' + Kasus_Posi }}" class="l-confirm" />
+	                    <Label text="{{ 'Active ' + Kasus_akti }}" class="l-active" />
+	                </StackLayout>
+                    <StackLayout orientation="horizontal" marginLeft="0">
 	                    <Label text="{{ 'Deaths ' + Kasus_Meni }}" class="l-deaths" />
+	                    <Label text="{{ 'Recovered ' + Kasus_Semb }}" class="l-recovered" />
 	                </StackLayout>
                 </StackLayout>
             </ListView.itemTemplate>

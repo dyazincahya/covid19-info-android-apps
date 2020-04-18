@@ -4,7 +4,7 @@
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <Label text="COVID-19 - World Wide Report"></Label>
+        <Label text="COVID19 - World Wide Report"></Label>
         <ActionItem tap="onGlobal" text="Global Report" android.position="popup" />
         <ActionItem tap="onLocal" text="Indonesia Report" android.position="popup" />
         <ActionItem tap="onMaps" text="Maps Report" android.position="popup" />
@@ -13,16 +13,16 @@
 
     <GridLayout rows="*,auto,auto">
 	    <StackLayout row="0">
-	    	<Label text="GLOBAL (All country)" class="b-title" />
+	    	<Label text="GLOBAL CASE (All country)" class="b-title" />
 	    	<GridLayout rows="auto,10, auto" columns="10,*,10,*,10">
 	    		<StackLayout row="0" col="1" class="b-confirm">
 	    			<Label text="{{ confirmed }}" />
 	    			<Label text="POSITIVE" />
 	    		</StackLayout>
 
-				<StackLayout row="0" col="3" class="b-recovery">
+				<StackLayout row="0" col="3" class="b-active">
 	    			<Label text="{{ active }}" />
-	    			<Label text="RECOVERY" />
+	    			<Label text="ACTIVE" />
 	    		</StackLayout>
 
 	    		<StackLayout row="2" col="1" class="b-deaths">
@@ -37,16 +37,16 @@
 	    	</GridLayout>
 	    	<Label text="{{ 'Last update ' + lastupdate }}" class="b-lastupdate" />
 
-	    	<Label text="LOCAL (Indonesia)" class="b-title" />
+	    	<Label text="LOCAL CASE (Indonesia)" class="b-title" />
 	    	<GridLayout rows="auto,10, auto" columns="10,*,10,*,10">
 	    		<StackLayout row="0" col="1" class="b-confirm">
 	    			<Label text="{{ confirmed_id }}" />
 	    			<Label text="POSITIVE" />
 	    		</StackLayout>
 
-				<StackLayout row="0" col="3" class="b-recovery">
+				<StackLayout row="0" col="3" class="b-active">
 	    			<Label text="{{ active_id }}" />
-	    			<Label text="RECOVERY" />
+	    			<Label text="ACTIVE" />
 	    		</StackLayout>
 
 	    		<StackLayout row="2" col="1" class="b-deaths">
@@ -63,6 +63,6 @@
 	    	<Label text="{{ 'Last update ' + lastupdate_id }}" class="b-lastupdate" />
 	    </StackLayout> 
     	<Label text="develop by kang-cahya.com" class="b-developer" row="1" />
-    	<Label text="apps version 1.4" class="b-versionapps" row="2" />
+    	<Label text="apps version 1.5" class="b-versionapps" row="2" />
     </GridLayout>
 </Page>

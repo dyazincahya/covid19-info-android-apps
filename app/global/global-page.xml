@@ -16,12 +16,14 @@
         <ListView row="1" items="{{ items }}" itemTap="onItemTap" height="100%" class="list-group">
             <ListView.itemTemplate>
                 <StackLayout>
-                    <Label text="{{ Country_Region }}" class="l-title" />
-                    <Label text="{{ 'Positive ' + Confirmed }}" class="l-confirm" />
+                    <Label text="{{ Country_Region }}" class="l-title" textWrap="true" />
                     <StackLayout orientation="horizontal" marginLeft="0">
-	                    <Label text="{{ 'Recovery ' + Active }}" class="l-recovery" />
-	                    <Label text="{{ 'Recovered ' + Recovered }}" class="l-recovered" />
+                        <Label text="{{ 'Positive ' + Confirmed }}" class="l-confirm" />
+	                    <Label text="{{ 'Active ' + Active }}" class="l-active" />
+	                </StackLayout>
+                    <StackLayout orientation="horizontal" marginLeft="0">
 	                    <Label text="{{ 'Deaths ' + Deaths }}" class="l-deaths" />
+	                    <Label text="{{ 'Recovered ' + Recovered }}" class="l-recovered" />
 	                </StackLayout>
                     <Label text="{{ 'last update ' + Last_Update }}" class="l-las-update" />
                 </StackLayout>

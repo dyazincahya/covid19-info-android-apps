@@ -8,12 +8,17 @@
 
 .l-confirm {
 	font-size: 15;
-	color: #e53935;
-	margin-left: 5;
-	font-weight: bold;
+	color: #ffffff;
+	background: #e53935;
+	padding-left: 7;
+	padding-right: 7;
+	padding-top: 3;
+	padding-bottom: 3;
+	border-radius: 5; 
+	margin-right: 5;
 }
 
-.l-recovery {
+.l-active {
 	font-size: 15;
 	color: #333333;
 	background: #FFEB3B;
@@ -98,7 +103,7 @@
 	color: #ffffff;
 }
 
-.b-recovery {
+.b-active {
 	font-size: 15;
 	background: #FFEB3B;
 	text-align: center;
@@ -125,23 +130,38 @@
 /* MAPS VIEW */
 .tmv-title {
 	horizontal-align: left;
-    font-size: 15;
-    margin-bottom: 10;
-    color: #009688;
+	font-size: 18;
+	margin-top: 0;
+	margin-left: 7;
+	margin-right: 7;
+    margin-bottom: 7;
+	color: #009688;
+	font-weight: bold;
 }
 
 .tmv-snippet {
-    font-size: 13;
+	margin-top: 5;
+	margin-left: 7;
+	margin-right: 7;
+	margin-bottom: 0;
+    font-size: 12;
     horizontal-align: left;
-    margin-bottom: 10;
-    color: #999;
+    color: #FF9800;
 }
 
 .tmv-info {
     horizontal-align: left;
-    margin: 0;
+	margin-left: 7;
     color: #999999;
-    font-size: 11;
+    font-size: 15;
+}
+
+.tmv-do {
+	horizontal-align: center;
+	color: #f44336;
+	font-size: 11;
+	padding: 5;
+	margin-top: 5;
 }
 /* Place any CSS rules you want to apply on both iOS and Android here.
 This is where the vast majority of your CSS code goes. */

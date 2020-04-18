@@ -51,15 +51,16 @@ function getAllData(){
 
             	for (var i = 0; i < result.length; i++) 
             	{ 
-                    if(result[i].attributes.Country_Region.toUpperCase() === "INDONESIA")
+                    var data_country;
+                    if(result[i].attributes.Country_Region.toUpperCase() == "INDONESIA")
                     {
                         lastupdate_id = result[i].attributes.Last_Update;
-                        Confirmed_id = parseInt(result[i].attributes.Confirmed);
-                        Deaths_id = parseInt(result[i].attributes.Deaths);
-                        Recovered_id = parseInt(result[i].attributes.Recovered);
-                        Active_id = parseInt(result[i].attributes.Active);
+                        Confirmed_id = result[i].attributes.Confirmed;
+                        Deaths_id = result[i].attributes.Deaths;
+                        Recovered_id = result[i].attributes.Recovered;
+                        Active_id = result[i].attributes.Active;
  
-                        el.push({
+                        data_country = {
                             OBJECTID : result[i].attributes.OBJECTID,
                             Country_Region : result[i].attributes.Country_Region,
                             Last_Update : fd(result[i].attributes.Last_Update),
@@ -69,7 +70,7 @@ function getAllData(){
                             Deaths : fn(result[i].attributes.Deaths),
                             Recovered : fn(result[i].attributes.Recovered),
                             Active : fn(result[i].attributes.Active)
-                        });
+                        };
                     } 
                     else 
                     {
@@ -79,7 +80,7 @@ function getAllData(){
                         Recovered = Recovered + parseInt(result[i].attributes.Recovered);
                         Active = Active + parseInt(result[i].attributes.Active);
                         
-                        el.push({
+                        data_country = {
                             OBJECTID : result[i].attributes.OBJECTID,
                             Country_Region : result[i].attributes.Country_Region,
                             Last_Update : fd(result[i].attributes.Last_Update),
@@ -89,8 +90,10 @@ function getAllData(){
                             Deaths : fn(result[i].attributes.Deaths),
                             Recovered : fn(result[i].attributes.Recovered),
                             Active : fn(result[i].attributes.Active)
-                        }); 
-                    }                    
+                        }; 
+                    }
+                    
+                    el.push(data_country);
                 }
                 
                 gAllGlobal = el;
@@ -156,7 +159,7 @@ exports.onNavigatingTo = function(args) {
     xLoading.show(gConfig.loadingOption);
     timerModule.setTimeout(function () {
         getAllData();
-    }, gConfig.timeloader);
+    }, 10);
 
     page.bindingContext = context;
 };

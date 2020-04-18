@@ -31,9 +31,12 @@ function fetchAllData(){
         if(result){
             if(result.length > 0){
             	var el = [];
-            	for (var i = 0; i < result.length; i++) {
-                    if(result[i].attributes.Country_Region.toUpperCase() == "INDONESIA"){
-                        el.push({
+                for (var i = 0; i < result.length; i++) 
+                {
+                    var data_country;
+                    if(result[i].attributes.Country_Region.toUpperCase() == "INDONESIA")
+                    { 
+                        data_country = {
                             OBJECTID : result[i].attributes.OBJECTID,
                             Country_Region : result[i].attributes.Country_Region,
                             Last_Update : fd(result[i].attributes.Last_Update),
@@ -43,9 +46,11 @@ function fetchAllData(){
                             Deaths : fn(result[i].attributes.Deaths),
                             Recovered : fn(result[i].attributes.Recovered),
                             Active : fn(result[i].attributes.Active)
-                        });
-            		} else {
-                        el.push({
+                        };
+                    } 
+                    else 
+                    {
+                        data_country = {
                             OBJECTID : result[i].attributes.OBJECTID,
                             Country_Region : result[i].attributes.Country_Region,
                             Last_Update : fd(result[i].attributes.Last_Update),
@@ -55,8 +60,9 @@ function fetchAllData(){
                             Deaths : fn(result[i].attributes.Deaths),
                             Recovered : fn(result[i].attributes.Recovered),
                             Active : fn(result[i].attributes.Active)
-                        }); 
+                        }; 
                     }
+                    el.push(data_country);
                 }
                 gAllGlobal = el;
                 context.set("items", el);
@@ -75,7 +81,7 @@ function getAllData(){
     timerModule.setTimeout(function () {
         context.set("items", gAllGlobal);
         xLoading.hide();
-    }, gConfig.timeloader);
+    }, gConfig.timeloader+900);
 }
 
 exports.onLoaded = function(args) {
@@ -114,7 +120,7 @@ exports.onSubmit = function(args){
         }
     }
     context.set("items", data_filter);
-};
+}; 
 
 exports.onClear = function(){
     if(gGlobal){
@@ -129,7 +135,7 @@ exports.onItemTap=function(args){
     framePage.navigate({
         moduleName: "maps/maps-page",
         animated: true,
-        context: { lat: itemTapData.Lat, long: itemTapData.Long_ },
+        context: { cn: itemTapData.Country_Region, lat: itemTapData.Lat, long: itemTapData.Long_ },
         transition: {
             name: "fade"
         }
