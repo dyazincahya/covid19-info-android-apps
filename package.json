@@ -3,9 +3,6 @@
     "id": "com.kang.cahya.infocorona",
     "tns-ios": {
       "version": "6.5.0"
-    },
-    "tns-android": {
-      "version": "6.5.0"
     }
   },
   "description": "Apps COVID-19 Report World Wide",
