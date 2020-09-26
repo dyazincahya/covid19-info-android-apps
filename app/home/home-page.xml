@@ -5,10 +5,7 @@
 
     <ActionBar>
         <Label text="COVID19 - World Wide Report"></Label>
-        <ActionItem tap="onGlobal" text="Global Report" android.position="popup" />
-        <ActionItem tap="onLocal" text="Indonesia Report" android.position="popup" />
-        <ActionItem tap="onMaps" text="Maps Report" android.position="popup" />
-        <ActionItem tap="onRefresh" text="Refresh This Page" android.position="popup" />
+		<ActionItem tap="onRefresh" text="Refresh This Page" android.position="popup" />
     </ActionBar>
 
     <GridLayout rows="*,auto,auto">
@@ -61,8 +58,6 @@
 	    	</GridLayout>
 	    	<!-- <Label text="Source data from kawalcorona.com" class="b-datasource" /> -->
 	    	<Label text="{{ 'Last update ' + lastupdate_id }}" class="b-lastupdate" />
-	    </StackLayout> 
-    	<Label text="develop by kang-cahya.com" class="b-developer" row="1" />
-    	<Label text="apps version 1.5" class="b-versionapps" row="2" />
+	    </StackLayout>
     </GridLayout>
 </Page>

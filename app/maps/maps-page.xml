@@ -6,9 +6,6 @@
 
     <ActionBar>
         <Label text="{{ actionBarTitle }}"></Label>
-        <ActionItem tap="onBoard" text="Home" android.position="popup" />
-        <ActionItem tap="onGlobal" text="Global Report" android.position="popup" />
-        <ActionItem tap="onLocal" text="Indonesia Report" android.position="popup" />
     </ActionBar>
 
     <GridLayout rows="auto,*">
@@ -23,15 +20,14 @@
             markerSelect="onMarkerSelect"
             markerInfoWindowTapped="markerInfoWindowTapped">
             <maps:mapView.infoWindowTemplate>
-                <StackLayout orientation="vertical" width="280" height="150" >
+                <StackLayout orientation="vertical" width="280" height="200" >
                     <Label text="case at" className="tmv-snippet" />
                     <Label text="{{title}}" className="tmv-title" textWrap="true" />
-                    <GridLayout rows="auto, auto" columns="*, *">
-                        <Label text="{{ positive }}" className="tmv-info" row="0" col="0" />
-                        <Label text="{{ recovery }}" className="tmv-info" row="0" col="1" />
-
-                        <Label text="{{ deaths }}" className="tmv-info" row="1" col="0" />
-                        <Label text="{{ recovered }}" className="tmv-info" row="1" col="1" />
+                    <GridLayout rows="auto, auto, auto, auto">
+                        <Label text="{{ positive }}" className="tmv-info" row="0" />
+                        <Label text="{{ recovery }}" className="tmv-info" row="1" />
+                        <Label text="{{ deaths }}" className="tmv-info" row="2" />
+                        <Label text="{{ recovered }}" className="tmv-info" row="3" />
                     </GridLayout>
                     <Label text="* tap here if you want to back to country list" class="tmv-do" />
                 </StackLayout> 

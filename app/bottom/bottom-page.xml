@@ -1,0 +1,52 @@
+<Page
+    loaded="onLoaded"
+    actionBarHidden="true"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+    
+    <BottomNavigation selectedIndex="{{ selectedIndex }}">
+        <TabStrip>
+            <TabStripItem> 
+                <Label text="Dashboard" />
+                <Image src="font://&#xf84c;"  class="fas t-36" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Global" />
+                <Image src="font://&#xf57e;"  class="fas t-36" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Indonesia" />
+                <Image src="font://&#xf276;"  class="fas t-36" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Maps" />
+                <Image src="font://&#xf5a0;"  class="fas t-36" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="About" />
+                <Image src="font://&#xf05a;"  class="fas t-36" />
+            </TabStripItem>
+        </TabStrip>
+
+        <TabContentItem>
+            <Frame defaultPage="home/home-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="global/global-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="local/local-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="maps/maps-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="about/about-page" />
+        </TabContentItem>
+    </BottomNavigation>
+
+</Page>

@@ -5,10 +5,6 @@
 
     <ActionBar>
         <Label text="Global Report"></Label>
-        <ActionItem tap="onBoard" text="Home" android.position="popup" />
-        <ActionItem tap="onLocal" text="Indonesia Report" android.position="popup" />
-        <ActionItem tap="onMaps" text="Maps Report" android.position="popup" />
-        <ActionItem tap="onRefresh" text="Refresh This Page" android.position="popup" />
     </ActionBar>
 
     <GridLayout rows="auto,*">

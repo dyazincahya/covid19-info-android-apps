@@ -1,0 +1,16 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label text="About"></Label>
+    </ActionBar>
+    <GridLayout rows="auto,auto,auto,auto,auto" height="100%" marginTop="50">
+        <Label text="Sebelumnya saya ucapkan terima kasih telah memasang aplikasi ini pada perangkat Anda, saya pastikan aplikasi ini aman 100%, tidak ada selipan aneh-aneh didalam aplikasi ini, aplikasi ini 100% murni buatan saya sendiri." padding="30" fontSize="15" class="center" textWrap="true" row="0" />
+        <Label text="Data aplikasi ini bersumber dari kawalcorona.com dan data di perbaharui secara berskala setiap waktu." padding="30" fontSize="15" class="center" textWrap="true" row="1" />
+        <Label text="develop by kang-cahya.com" class="b-developer" row="2" />
+    	<Label text="apps version 1.6" class="b-developer" row="3" />
+    	<Label text="build 2020/09/26" class="b-developer" row="4" />
+    </GridLayout>
+</Page>

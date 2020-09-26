@@ -5,8 +5,6 @@
 
     <ActionBar>
         <Label text="Indonesia Report"></Label>
-        <ActionItem tap="onBoard" text="Home" android.position="popup" />
-        <ActionItem tap="onGlobal" text="Global Report" android.position="popup" />
         <ActionItem tap="onRefresh" text="Refresh This Page" android.position="popup" />
     </ActionBar>
 

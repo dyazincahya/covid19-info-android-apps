@@ -2,38 +2,38 @@ const application = require("tns-core-modules/application");
 const ModeLoadingIndicator = require('@nstudio/nativescript-loading-indicator').Mode;
 
 global.gUrl = "https://api.kawalcorona.com/";
-global.gLocal = ""; 
+global.gLocal = "";
 global.gGlobal = "";
 global.gAllGlobal = [];
 global.gConfig = {
-    "timeloader"		: 100,
-    "timepullrefresh"	: 1000,
-    "loadingOption" 	: {
-	    message: 'Loading data...',
-	    margin: 10,
-	    dimBackground: true,
-	    color: '#FFFFFF', 
-	    backgroundColor: '#FFFFFF',
-	    userInteractionEnabled: true,
-	    hideBezel: true,
-	    mode: ModeLoadingIndicator.Indeterminate, 
-	    android: {
-			cancelable: false,
-		}
-	},
-	"fetchingOption" 	: {
-	    message: 'Fetching data...',
-	    margin: 10,
-	    dimBackground: true,
-	    color: '#FFFFFF', 
-	    backgroundColor: '#FFFFFF',
-	    userInteractionEnabled: true,
-	    hideBezel: true,
-	    mode: ModeLoadingIndicator.Indeterminate, 
-	    android: {
-			cancelable: false,
-		}
-	}
+    "timeloader": 100,
+    "timepullrefresh": 1000,
+    "loadingOption": {
+        message: 'Loading data...',
+        margin: 10,
+        dimBackground: true,
+        color: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
+        userInteractionEnabled: true,
+        hideBezel: true,
+        mode: ModeLoadingIndicator.Indeterminate,
+        android: {
+            cancelable: false,
+        }
+    },
+    "fetchingOption": {
+        message: 'Fetching data...',
+        margin: 10,
+        dimBackground: true,
+        color: '#FFFFFF',
+        backgroundColor: '#FFFFFF',
+        userInteractionEnabled: true,
+        hideBezel: true,
+        mode: ModeLoadingIndicator.Indeterminate,
+        android: {
+            cancelable: false,
+        }
+    }
 };
 
 application.run({ moduleName: "app-root" });
