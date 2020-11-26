@@ -1,37 +1,57 @@
-## Welcome to GitHub Pages
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/logo.png" width="75">
 
-You can use the [editor on GitHub](https://github.com/dyazincahya/covid19-info-android-apps/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# COVID-19 Info Android Apps
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Covid19-info.apk (latest v1.6)
+[Download](https://github.com/dyazincahya/covid19-info-android-apps/blob/master/covid19-info.apk) || [Download Mirror](https://github.com/dyazincahya/covid19-info-android-apps/raw/master/covid19-info.apk)
 
-### Markdown
+### Info List
+- Summary Report
+- Global Report
+- Local Report (Indonesia)
+- Maps Report
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Data Source
+[kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
 
-```markdown
-Syntax highlighted code block
+### Screenshot
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/3.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/5.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/6.png" width="200">
 
-# Header 1
-## Header 2
-### Header 3
+### Requirement To Install
+- NodeJS v12.16.1
+- NPM v6.14.1
+- Nativescript v6.5.1
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### How to run?
+First install all dependecies in ```package.json``` with run this command
+``` bash
+npm install
+```
+#### andorid
+``` bash
+tns run android
+```
+#### ios
+``` bash
+tns run ios
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### How to build?
+First install all dependecies in ```package.json``` with run this command
+``` bash
+npm install
+```
+#### andorid
+``` bash
+tns build android
+```
+#### ios
+``` bash
+tns build ios
+```
 
-### Jekyll Themes
+### Author
+[kang-cahya.com](https://www.kang-cahya.com/)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dyazincahya/covid19-info-android-apps/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### License
+[Apache License 2.0](https://github.com/dyazincahya/covid19-info-android-apps/blob/master/LICENSE)
