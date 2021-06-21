@@ -3,6 +3,10 @@ const permissionsModule = require('nativescript-permissions');
 const LoadingIndicatorModule = require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
 const xLoading = new LoadingIndicatorModule();
 
+const appSettings = require("tns-core-modules/application-settings");
+
+const lsa = require('../localstorage_array');
+
 const GlobalModel = require("../global-model");
 var GetModel = new GlobalModel([]);
 
@@ -41,30 +45,52 @@ function maxVal(arr) {
 
 function getAllData() {
     GetModel.global().then(function(result) {
-        xLoading.hide();
-        gAllGlobal = result;
-        prosesDataGlobal();
-        prosesDataLocal();
+        lsa.drop();
+
+        timerModule.setTimeout(function() {
+            xLoading.hide();
+            lsa.insert(result);
+            prosesDataGlobal();
+            // prosesDataLocal();
+        }, 740);
 
     });
 }
 
+function multiDimensionalUnique(arr) {
+    var uniques = [];
+    var itemsFound = {};
+    for(var i = 0, l = arr.length; i < l; i++) {
+        var stringified = JSON.stringify(arr[i]);
+        if(itemsFound[stringified]) { continue; }
+        uniques.push(arr[i]);
+        itemsFound[stringified] = true;
+    }
+    return uniques;
+}
+
+function aaaa(aa){
+    var abc = JSON.stringify(a)
+}
+
 function prosesDataGlobal() {
-    const result = gAllGlobal;
-    if (result) {
-        if (result.length > 0) {
+    const result = lsa.get();
+    console.log((JSON.parse(appSettings.getString("lsakc")))); 
+    console.log(result.data[0].attributes); 
+    /* if (result.success) {
+        if (result.data.length > 0) {
             var lastupdate = [],
                 Confirmed = 0,
                 Deaths = 0,
                 Recovered = 0,
                 Active = 0;
 
-            for (var i = 0; i < result.length; i++) {
+            for (var i = 0; i < result.data.length; i++) {
                 lastupdate.push(result[i].attributes.Last_Update);
-                Confirmed = Confirmed + parseInt(isNum(result[i].attributes.Confirmed));
-                Deaths = Deaths + parseInt(isNum(result[i].attributes.Deaths));
-                Recovered = Recovered + parseInt(isNum(result[i].attributes.Recovered));
-                Active = Active + parseInt(isNum(result[i].attributes.Active));
+                Confirmed = Confirmed + parseInt(isNum(result.data[i].attributes.Confirmed));
+                Deaths = Deaths + parseInt(isNum(result.data[i].attributes.Deaths));
+                Recovered = Recovered + parseInt(isNum(result.data[i].attributes.Recovered));
+                Active = Active + parseInt(isNum(result.data[i].attributes.Active));
             }
 
             context.set("lastupdate", fd(maxVal(lastupdate)));
@@ -80,13 +106,13 @@ function prosesDataGlobal() {
     } else {
         failValue();
         xLoading.hide();
-    }
+    } */
 }
 
 function prosesDataLocal() {
-    const result = gAllGlobal;
-    if (result) {
-        if (result.length > 0) {
+    const result = lsa.get();
+    if (result.success) {
+        if (result.data.length > 0) {
             var lastupdate_id = "",
                 Confirmed_id = 0,
                 Deaths_id = 0,
@@ -94,13 +120,13 @@ function prosesDataLocal() {
                 Active_id = 0,
                 lastupdate_id = "";
 
-            for (var i = 0; i < result.length; i++) {
-                if (result[i].attributes.Country_Region.toUpperCase() == "INDONESIA") {
-                    lastupdate_id = result[i].attributes.Last_Update;
-                    Confirmed_id = result[i].attributes.Confirmed;
-                    Deaths_id = result[i].attributes.Deaths;
-                    Recovered_id = result[i].attributes.Recovered;
-                    Active_id = result[i].attributes.Active;
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].attributes.Country_Region.toUpperCase() == "INDONESIA") {
+                    lastupdate_id = result.data[i].attributes.Last_Update;
+                    Confirmed_id = result.data[i].attributes.Confirmed;
+                    Deaths_id = result.data[i].attributes.Deaths;
+                    Recovered_id = result.data[i].attributes.Recovered;
+                    Active_id = result.data[i].attributes.Active;
                 }
             }
 
@@ -110,7 +136,7 @@ function prosesDataLocal() {
             context.set("recovered_id", fn(Recovered_id));
             context.set("active_id", fn(Active_id));
 
-            xLoading.hide();
+            xLoading.hide(); 
         } else {
             failValue();
             xLoading.hide();
