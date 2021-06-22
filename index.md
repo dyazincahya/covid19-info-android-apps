@@ -1,4 +1,4 @@
-<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/logo.png" width="200">
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/logo.png" width="200">
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K02WIPN)
 
@@ -16,7 +16,7 @@
 [kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
 
 ### Screenshot
-<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/3.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/5.png" width="200">
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/3.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/5.png" width="200">
 
 ### Requirement To Install
 - NodeJS v12.16.1
