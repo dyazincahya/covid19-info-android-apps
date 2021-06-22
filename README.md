@@ -11,7 +11,6 @@
 - Summary Report
 - Global Report
 - Local Report (Indonesia)
-- Maps Report
 
 ### Data Source
 [kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
