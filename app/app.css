@@ -15,6 +15,30 @@
     font-weight: 400;
 }
 
+.ffRusso {
+    font-family: "RussoOne-Regular";
+}
+
+.ffStaatliches {
+    font-family: "Staatliches-Regular";
+}
+
+.ffUbuntu {
+    font-family: "UbuntuMono-Regular";
+}
+
+.ffUbuntu-bold {
+    font-family: "UbuntuMono-Bold";
+}
+
+.ffUbuntu-italic {
+    font-family: "UbuntuMono-Italic";
+}
+
+.ffUbuntu-bold-italic {
+    font-family: "UbuntuMono-BoldItalic";
+}
+
 TabStrip {
     selected-item-color: #e53935;
     un-selected-item-color: #333;

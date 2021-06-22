@@ -45,102 +45,94 @@ function maxVal(arr) {
 
 function getAllData() {
     GetModel.global().then(function(result) {
-        lsa.drop();
-
-        timerModule.setTimeout(function() {
-            xLoading.hide();
-            lsa.insert(result);
-            prosesDataGlobal();
-            // prosesDataLocal();
-        }, 740);
-
+        ___grobalData(result);
+        ___localData(result);
     });
 }
 
-function multiDimensionalUnique(arr) {
-    var uniques = [];
-    var itemsFound = {};
-    for(var i = 0, l = arr.length; i < l; i++) {
-        var stringified = JSON.stringify(arr[i]);
-        if(itemsFound[stringified]) { continue; }
-        uniques.push(arr[i]);
-        itemsFound[stringified] = true;
-    }
-    return uniques;
-}
+function ___grobalData(data) {
+    const result = data;
+    if (result.length > 0) {
+        let Confirmed = 0,
+            Deaths = 0,
+            Recovered = 0,
+            Active = 0;
 
-function aaaa(aa){
-    var abc = JSON.stringify(a)
-}
-
-function prosesDataGlobal() {
-    const result = lsa.get();
-    console.log((JSON.parse(appSettings.getString("lsakc")))); 
-    console.log(result.data[0].attributes); 
-    /* if (result.success) {
-        if (result.data.length > 0) {
-            var lastupdate = [],
-                Confirmed = 0,
-                Deaths = 0,
-                Recovered = 0,
-                Active = 0;
-
-            for (var i = 0; i < result.data.length; i++) {
-                lastupdate.push(result[i].attributes.Last_Update);
-                Confirmed = Confirmed + parseInt(isNum(result.data[i].attributes.Confirmed));
-                Deaths = Deaths + parseInt(isNum(result.data[i].attributes.Deaths));
-                Recovered = Recovered + parseInt(isNum(result.data[i].attributes.Recovered));
-                Active = Active + parseInt(isNum(result.data[i].attributes.Active));
-            }
-
-            context.set("lastupdate", fd(maxVal(lastupdate)));
-            context.set("confirmed", fn(Confirmed));
-            context.set("deaths", fn(Deaths));
-            context.set("recovered", fn(Recovered));
-            context.set("active", fn(Active));
-            xLoading.hide();
-        } else {
-            failValue();
-            xLoading.hide();
+        for (let i = 0; i < result.length; i++) {
+            Confirmed = Confirmed + parseInt(isNum(result[i].attributes.Confirmed));
+            Deaths = Deaths + parseInt(isNum(result[i].attributes.Deaths));
+            Recovered = Recovered + parseInt(isNum(result[i].attributes.Recovered));
+            Active = Active + parseInt(isNum(result[i].attributes.Active));
         }
+
+        context.set("confirmed", fn(Confirmed));
+        context.set("deaths", fn(Deaths));
+        context.set("recovered", fn(Recovered));
+        context.set("active", fn(Active));
+        
+        let All_total = Confirmed+Deaths+Recovered+Active;
+
+        let Confirmed_pres = (Confirmed/All_total)*100;
+        let Deaths_pres = (Deaths/All_total)*100;
+        let Recovered_pres = (Recovered/All_total)*100;
+        let Active_pres = (Active/All_total)*100;
+
+        context.set("confirmed_pres", Math.round(Confirmed_pres));
+        context.set("deaths_pres", Math.round(Deaths_pres));
+        context.set("recovered_pres", Math.round(Recovered_pres));
+        context.set("active_pres", Math.round(Active_pres));
+
+        context.set("all_total", fn(All_total));
+
+
+        xLoading.hide();
     } else {
         failValue();
         xLoading.hide();
-    } */
+    }
 }
 
-function prosesDataLocal() {
-    const result = lsa.get();
-    if (result.success) {
-        if (result.data.length > 0) {
-            var lastupdate_id = "",
-                Confirmed_id = 0,
-                Deaths_id = 0,
-                Recovered_id = 0,
-                Active_id = 0,
-                lastupdate_id = "";
+function ___localData(data) {
+    const result = data
+    if (result.length > 0) {
+        let lastupdate = "",
+            Confirmed_id = 0,
+            Deaths_id = 0,
+            Recovered_id = 0,
+            Active_id = 0;
 
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].attributes.Country_Region.toUpperCase() == "INDONESIA") {
-                    lastupdate_id = result.data[i].attributes.Last_Update;
-                    Confirmed_id = result.data[i].attributes.Confirmed;
-                    Deaths_id = result.data[i].attributes.Deaths;
-                    Recovered_id = result.data[i].attributes.Recovered;
-                    Active_id = result.data[i].attributes.Active;
-                }
+        for (let i = 0; i < result.length; i++) {
+            if (result[i].attributes.Country_Region.toUpperCase() == "INDONESIA") {
+                lastupdate = result[i].attributes.Last_Update;
+                Confirmed_id = parseInt(isNum(result[i].attributes.Confirmed));
+                Deaths_id = parseInt(isNum(result[i].attributes.Deaths));
+                Recovered_id = parseInt(isNum(result[i].attributes.Recovered));
+                Active_id = parseInt(isNum(result[i].attributes.Active));
             }
-
-            context.set("lastupdate_id", fd(lastupdate_id));
-            context.set("confirmed_id", fn(Confirmed_id));
-            context.set("deaths_id", fn(Deaths_id));
-            context.set("recovered_id", fn(Recovered_id));
-            context.set("active_id", fn(Active_id));
-
-            xLoading.hide(); 
-        } else {
-            failValue();
-            xLoading.hide();
         }
+
+        context.set("lastupdate", fd(lastupdate));
+
+        context.set("confirmed_id", fn(Confirmed_id));
+        context.set("deaths_id", fn(Deaths_id));
+        context.set("recovered_id", fn(Recovered_id));
+        context.set("active_id", fn(Active_id));
+
+        let All_total_id = Confirmed_id+Deaths_id+Recovered_id+Active_id;
+
+        let Confirmed_pres_id = (Confirmed_id/All_total_id)*100;
+        let Deaths_pres_id = (Deaths_id/All_total_id)*100;
+        let Recovered_pres_id = (Recovered_id/All_total_id)*100;
+        let Active_pres_id = (Active_id/All_total_id)*100;
+
+        context.set("confirmed_pres_id", Math.round(Confirmed_pres_id));
+        context.set("deaths_pres_id", Math.round(Deaths_pres_id));
+        context.set("recovered_pres_id", Math.round(Recovered_pres_id));
+        context.set("active_pres_id", Math.round(Active_pres_id));
+
+        context.set("all_total_id", fn(All_total_id));
+
+        xLoading.hide(); 
     } else {
         failValue();
         xLoading.hide();
@@ -149,30 +141,58 @@ function prosesDataLocal() {
 
 function failValue() {
     context.set("lastupdate", " 0 ");
+
     context.set("confirmed", " 0 ");
     context.set("deaths", " 0 ");
     context.set("recovered", " 0 ");
     context.set("active", " 0 ");
 
-    context.set("lastupdate_id", " 0 ");
+    context.set("confirmed_pres", "0");
+    context.set("deaths_pres", "0");
+    context.set("recovered_pres", "0");
+    context.set("active_pres", "0");
+
+    context.set("all_total", "0");
+
     context.set("confirmed_id", " 0 ");
     context.set("deaths_id", " 0 ");
     context.set("recovered_id", " 0 ");
     context.set("active_id", " 0 ");
+
+    context.set("confirmed_pres_id", "0");
+    context.set("deaths_pres_id", "0");
+    context.set("recovered_pres_id", "0");
+    context.set("active_pres_id", "0");
+
+    context.set("all_total_id", "0");
 }
 
 function defaultValue() {
     context.set("lastupdate", " loading... ");
+
     context.set("confirmed", " loading... ");
     context.set("deaths", " loading... ");
     context.set("recovered", " loading... ");
     context.set("active", " loading... ");
 
-    context.set("lastupdate_id", " loading... ");
+    context.set("confirmed_pres", "0");
+    context.set("deaths_pres", "0");
+    context.set("recovered_pres", "0");
+    context.set("active_pres", "0");
+
+    context.set("all_total", "loading... ");
+
     context.set("confirmed_id", " loading... ");
     context.set("deaths_id", " loading... ");
     context.set("recovered_id", " loading... ");
     context.set("active_id", " loading... ");
+
+    context.set("confirmed_pres_id", "0");
+    context.set("deaths_pres_id", "0");
+    context.set("recovered_pres_id", "0");
+    context.set("active_pres_id", "0");
+
+    context.set("all_total_id", "loading... ");
 }
 
 exports.onLoaded = function(args) {
@@ -196,10 +216,10 @@ exports.onNavigatingTo = function(args) {
 
     defaultValue();
 
-    xLoading.show(gConfig.loadingOption);
+    xLoading.show(gConfig.fetchingOption);
     timerModule.setTimeout(function() {
         getAllData();
-    }, 500);
+    }, 100);
 
     page.bindingContext = context;
 };
