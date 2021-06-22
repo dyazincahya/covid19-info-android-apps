@@ -1,21 +1,22 @@
-<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/logo.png" width="75">
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/logo.png" width="200">
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K02WIPN)
 
 # COVID-19 Info Android Apps
 
-### Covid19-info.apk (latest v1.6)
-[Download](https://github.com/dyazincahya/covid19-info-android-apps/blob/master/covid19-info.apk) || [Download Mirror](https://github.com/dyazincahya/covid19-info-android-apps/raw/master/covid19-info.apk)
+### Downloa APK (latest v2.0)
+[Download APK Covid19 Info (via Github)](https://github.com/dyazincahya/covid19-info-android-apps/releases/download/v2.0/covid19-info-v2.0.apk)
 
 ### Info List
 - Summary Report
 - Global Report
 - Local Report (Indonesia)
-- Maps Report
 
 ### Data Source
 [kawalcorona.com](https://kawalcorona.com) (kemkes.go.id)
 
 ### Screenshot
-<img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/3.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/5.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/raw/master/screenshot/6.png" width="200">
+<img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/1.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/2.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/3.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/4.png" width="200"> <img src="https://github.com/dyazincahya/covid19-info-android-apps/blob/master/screenshot/5.png" width="200">
 
 ### Requirement To Install
 - NodeJS v12.16.1
