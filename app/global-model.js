@@ -4,7 +4,7 @@ const httpModule        = require("tns-core-modules/http");
 function xViewModel(items) {
     var viewModel = new ObservableArray(items);
 
-    viewModel.global = function (data={}) { 
+    viewModel.global = function () { 
         return httpModule.request({
             url: gUrl,
             method: "GET"
@@ -15,20 +15,9 @@ function xViewModel(items) {
         });
     };
 
-    viewModel.local = function (data={}) { 
+    viewModel.indonesia = function () { 
         return httpModule.request({
-            url: gUrl + "indonesia/provinsi",
-            method: "GET"
-        }).then(function (response) {
-            return response.content.toJSON();
-        }, function (e) {
-            console.log("Error occurred " + e);
-        });
-    };
-
-    viewModel.indonesia = function (data={}) { 
-        return httpModule.request({
-            url: gUrl + "indonesia",
+            url: gUrl + "indonesia/provinsi/",
             method: "GET"
         }).then(function (response) {
             return response.content.toJSON();

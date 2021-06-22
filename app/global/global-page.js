@@ -28,73 +28,41 @@ function fd(ts) {
     return formattedTime;
 }
 
-function fetchAllData() {
-    GetModel.global().then(function(result) {
-        if (result) {
-            if (result.length > 0) {
-                var el = [];
-                for (var i = 0; i < result.length; i++) {
-                    var data_country;
-                    if (result[i].attributes.Country_Region.toUpperCase() == "INDONESIA") {
-                        data_country = {
-                            OBJECTID: result[i].attributes.OBJECTID,
-                            Country_Region: result[i].attributes.Country_Region,
-                            Last_Update: fd(result[i].attributes.Last_Update),
-                            Lat: -4.144909999999999,
-                            Long_: 122.17460499999993,
-                            Confirmed: fn(result[i].attributes.Confirmed),
-                            Deaths: fn(result[i].attributes.Deaths),
-                            Recovered: fn(result[i].attributes.Recovered),
-                            Active: fn(result[i].attributes.Active)
-                        };
-                    } else {
-                        data_country = {
-                            OBJECTID: result[i].attributes.OBJECTID,
-                            Country_Region: result[i].attributes.Country_Region,
-                            Last_Update: fd(result[i].attributes.Last_Update),
-                            Lat: result[i].attributes.Lat,
-                            Long_: result[i].attributes.Long_,
-                            Confirmed: fn(result[i].attributes.Confirmed),
-                            Deaths: fn(result[i].attributes.Deaths),
-                            Recovered: fn(result[i].attributes.Recovered),
-                            Active: fn(result[i].attributes.Active)
-                        };
-                    }
-                    el.push(data_country);
-                }
-                gAllGlobal = el;
-                context.set("items", el);
-                xLoading.hide();
-            } else {
-                context.set("items", []);
-            }
-        } else {
-            context.set("items", []);
-        }
-        xLoading.hide();
-    });
-}
 
-function getAllData() {
-    timerModule.setTimeout(function() {
-        let result = gAllGlobal,
-            el = [];
+function __getData() {
+    GetModel.global().then(function(result) {
+        let el = [];
         for (var i = 0; i < result.length; i++) {
+            let confirmed = result[i].attributes.Confirmed;
+            let deaths = result[i].attributes.Deaths;
+            let recovered = result[i].attributes.Recovered;
+            let active = result[i].attributes.Active;
+
+            let All_Total = confirmed+deaths+recovered+active;
+
             el.push({
+                Index_Key: (i+1),
                 OBJECTID: result[i].attributes.OBJECTID,
                 Country_Region: result[i].attributes.Country_Region,
                 Last_Update: fd(result[i].attributes.Last_Update),
                 Lat: result[i].attributes.Lat,
                 Long_: result[i].attributes.Long_,
-                Confirmed: fn(result[i].attributes.Confirmed),
-                Deaths: fn(result[i].attributes.Deaths),
-                Recovered: fn(result[i].attributes.Recovered),
-                Active: fn(result[i].attributes.Active)
+                Confirmed: fn(confirmed),
+                Deaths: fn(deaths),
+                Recovered: fn(recovered),
+                Active: fn(active),
+                Confirmed_pres: Math.round((confirmed/All_Total)*100),
+                Deaths_pres: Math.round((deaths/All_Total)*100),
+                Recovered_pres: Math.round((recovered/All_Total)*100),
+                Active_pres: Math.round((active/All_Total)*100),
+                All_Total: fn(All_Total)
             });
         }
         context.set("items", el);
+        context.set("lastupdate", fd(result[0].attributes.Last_Update));
+
         xLoading.hide();
-    }, gConfig.timeloader + 900);
+    });
 }
 
 exports.onLoaded = function(args) {
@@ -114,14 +82,13 @@ exports.onNavigatingTo = function(args) {
     context = GetModel;
 
     xLoading.show(gConfig.loadingOption);
-    getAllData()
+    __getData()
 
     page.bindingContext = context;
 };
 
 exports.onSubmit = function(args) {
     let master_data = context.items;
-    gGlobal = context.items;
 
     var SearchBar = args.object;
     data_filter = [];
@@ -132,25 +99,24 @@ exports.onSubmit = function(args) {
             ij++;
         }
     }
-    context.set("items", data_filter);
-};
 
-exports.onClear = function() {
-    if (gGlobal) {
-        context.set("items", gGlobal);
+    if(data_filter.length > 0){
+        context.set("items", data_filter);
+    } else {
+        context.set("items", false);
     }
 };
 
-exports.onItemTap = function(args) {
-    let itemTap = args.view;
-    let itemTapData = itemTap.bindingContext;
+exports.onClear = function() {
+    xLoading.show(gConfig.loadingOption);
+    timerModule.setTimeout(function() {
+        __getData();
+    }, gConfig.timeloader);
+};
 
-    framePage.navigate({
-        moduleName: "maps/maps-page",
-        animated: true,
-        context: { cn: itemTapData.Country_Region, lat: itemTapData.Lat, long: itemTapData.Long_ },
-        transition: {
-            name: "fade"
-        }
-    });
+exports.onRefresh = function() {
+    xLoading.show(gConfig.fetchingOption);
+    timerModule.setTimeout(function() {
+        __getData();
+    }, gConfig.timeloader);
 };

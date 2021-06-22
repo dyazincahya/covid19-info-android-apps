@@ -2,9 +2,6 @@ const application = require("tns-core-modules/application");
 const ModeLoadingIndicator = require('@nstudio/nativescript-loading-indicator').Mode;
 
 global.gUrl = "https://api.kawalcorona.com/";
-global.gLocal = "";
-global.gGlobal = "";
-global.gAllGlobal = [];
 global.gConfig = {
     "timeloader": 100,
     "timepullrefresh": 1000,

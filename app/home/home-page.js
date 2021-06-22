@@ -1,11 +1,6 @@
 const timerModule = require("tns-core-modules/timer");
-const permissionsModule = require('nativescript-permissions');
 const LoadingIndicatorModule = require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
 const xLoading = new LoadingIndicatorModule();
-
-const appSettings = require("tns-core-modules/application-settings");
-
-const lsa = require('../localstorage_array');
 
 const GlobalModel = require("../global-model");
 var GetModel = new GlobalModel([]);
@@ -39,11 +34,7 @@ function fd(ts) {
     return formattedTime;
 }
 
-function maxVal(arr) {
-    return Math.max.apply(null, arr);
-}
-
-function getAllData() {
+function __getData() {
     GetModel.global().then(function(result) {
         ___grobalData(result);
         ___localData(result);
@@ -198,15 +189,6 @@ function defaultValue() {
 exports.onLoaded = function(args) {
     const page = args.object;
     framePage = page.frame;
-
-    permissionsModule.requestPermission([
-        android.Manifest.permission.ACCESS_FINE_LOCATION,
-        android.Manifest.permission.ACCESS_COARSE_LOCATION
-    ], "I need these permissions because I'm cool").then(() => {
-        console.log("Woo Hoo, I have the power!");
-    }).catch(() => {
-        console.log("Uh oh, no permissions - plan B time!");
-    });
 };
 
 exports.onNavigatingTo = function(args) {
@@ -218,7 +200,7 @@ exports.onNavigatingTo = function(args) {
 
     xLoading.show(gConfig.fetchingOption);
     timerModule.setTimeout(function() {
-        getAllData();
+        __getData();
     }, 100);
 
     page.bindingContext = context;
@@ -228,6 +210,6 @@ exports.onRefresh = function() {
     defaultValue();
     xLoading.show(gConfig.fetchingOption);
     timerModule.setTimeout(function() {
-        getAllData();
+        __getData();
     }, gConfig.timeloader);
 };

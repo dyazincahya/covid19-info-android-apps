@@ -1,16 +1,24 @@
 <Page
     loaded="onLoaded"
     navigatingTo="onNavigatingTo"  
+    actionBarHidden="true"
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <ActionBar>
-        <Label text="About"></Label>
-    </ActionBar>
-    <GridLayout rows="auto,auto,auto,auto,auto" height="100%" marginTop="50">
-        <Label text="Sebelumnya saya ucapkan terima kasih telah memasang aplikasi ini pada perangkat Anda, saya pastikan aplikasi ini aman 100%, tidak ada selipan aneh-aneh didalam aplikasi ini, aplikasi ini 100% murni buatan saya sendiri." padding="30" fontSize="15" class="center" textWrap="true" row="0" />
-        <Label text="Data aplikasi ini bersumber dari kawalcorona.com dan data di perbaharui secara berskala setiap waktu." padding="30" fontSize="15" class="center" textWrap="true" row="1" />
-        <Label text="develop by kang-cahya.com" class="b-developer" row="2" />
-    	<Label text="apps version 1.6" class="b-developer" row="3" />
-    	<Label text="build 2020/09/26" class="b-developer" row="4" />
+    <GridLayout rows="auto,*">
+		<GridLayout row="0" columns="10,*,auto" paddingTop="40" paddingBottom="17" backgroundColor="#FF1744">
+			<GridLayout col="1" rows="auto,auto">
+				<Label text="COVID19 Apps" class="ffUbuntu-bold" fontSize="24" row="0" paddingTop="15" color="#FFF" />
+				<Label text="Current Version 2.0 (build 20210622)" class="ffUbuntu-italic" fontSize="13" row="1" color="#FFF" />
+			</GridLayout>
+			<StackLayout col="2" padding="20" backgroundColor="#FFF">
+				<Image src="font://&#xf05a;" class="fas t-15" color="#FF1744" />
+			</StackLayout>
+		</GridLayout>
+        <GridLayout row="1" rows="auto,auto,auto,auto,auto" height="100%" padding="20">
+            <Label text="Sebelumnya saya ucapkan terima kasih telah memasang aplikasi ini pada perangkat Anda, saya pastikan aplikasi ini aman 100%, tidak ada selipan aneh-aneh didalam aplikasi ini, aplikasi ini 100% murni buatan saya sendiri." fontSize="15" textWrap="true" row="0" />
+            <Label text="Data aplikasi ini bersumber dari kawalcorona.com dan data di perbaharui secara berskala setiap waktu." marginTop="20" fontSize="15" textWrap="true" row="1" />
+            <Label text="Created By Kang Cahya" class="ffStaatliches" marginTop="40" fontSize="18" row="2" />
+            <Label text="https://www.kang-cahya.com" class="ffUbuntu-italic" color="#9E9E9E" fontSize="14" row="3" />
+        </GridLayout>
     </GridLayout>
 </Page>

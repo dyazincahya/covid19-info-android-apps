@@ -11,30 +11,35 @@ function fn(numb) {
     return numb.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
 
-function getAllData() {
-    GetModel.local().then(function(result) {
-        if (result) {
-            if (result.length > 0) {
-                var el = [];
-                for (var i = 0; i < result.length; i++) {
-                    el.push({
-                        FID: result[i].attributes.FID,
-                        Kode_Provi: result[i].attributes.Kode_Provi,
-                        Provinsi: result[i].attributes.Provinsi,
-                        Kasus_Posi: fn(result[i].attributes.Kasus_Posi),
-                        Kasus_Semb: fn(result[i].attributes.Kasus_Semb),
-                        Kasus_Meni: fn(result[i].attributes.Kasus_Meni),
-                        Kasus_akti: fn(result[i].attributes.Kasus_Posi - (result[i].attributes.Kasus_Semb + result[i].attributes.Kasus_Meni))
-                    });
-                }
-                context.set("items", el);
-                xLoading.hide();
-            } else {
-                context.set("items", []);
-            }
-        } else {
-            context.set("items", []);
+function __getData() {
+    GetModel.indonesia().then(function(result) {
+        let el = [];
+        for (var i = 0; i < result.length; i++) {
+            let kasus_posi = result[i].attributes.Kasus_Posi;
+            let kasus_meni = result[i].attributes.Kasus_Meni;
+            let kasus_semb = result[i].attributes.Kasus_Semb;
+            let kasus_akti = result[i].attributes.Kasus_Posi - (result[i].attributes.Kasus_Semb + result[i].attributes.Kasus_Meni);
+
+            let All_Total = kasus_posi+kasus_meni+kasus_semb+kasus_akti;
+
+            el.push({
+                Index_Key: (i+1),
+                FID: result[i].attributes.FID,
+                Kode_Provi: result[i].attributes.Kode_Provi,
+                Provinsi: result[i].attributes.Provinsi,
+                Kasus_Posi: fn(kasus_posi),
+                Kasus_Semb: fn(kasus_semb),
+                Kasus_Meni: fn(kasus_meni),
+                Kasus_akti: fn(kasus_akti),
+                Kasus_Posi_pres: Math.round((kasus_posi/All_Total)*100),
+                Kasus_Meni_pres: Math.round((kasus_meni/All_Total)*100),
+                Kasus_Semb_pres: Math.round((kasus_semb/All_Total)*100),
+                Kasus_akti_pres: Math.round((kasus_akti/All_Total)*100),
+                All_Total: fn(All_Total)
+            });
         }
+        context.set("items", el);
+
         xLoading.hide();
     });
 }
@@ -57,7 +62,7 @@ exports.onNavigatingTo = function(args) {
 
     xLoading.show(gConfig.loadingOption);
     timerModule.setTimeout(function() {
-        getAllData();
+        __getData();
     }, gConfig.timeloader);
 
     page.bindingContext = context;
@@ -65,7 +70,6 @@ exports.onNavigatingTo = function(args) {
 
 exports.onSubmit = function(args) {
     let master_data = context.items;
-    gLocal = context.items;
 
     var SearchBar = args.object;
     data_filter = [];
@@ -80,12 +84,15 @@ exports.onSubmit = function(args) {
 };
 
 exports.onClear = function() {
-    if (gLocal) {
-        context.set("items", gLocal);
-    }
+    xLoading.show(gConfig.loadingOption);
+    timerModule.setTimeout(function() {
+        __getData();
+    }, gConfig.timeloader);
 };
 
 exports.onRefresh = function() {
-    xLoading.show(gConfig.loadingOption);
-    getAllData();
+    xLoading.show(gConfig.fetchingOption);
+    timerModule.setTimeout(function() {
+        __getData();
+    }, gConfig.timeloader);
 };

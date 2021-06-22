@@ -15,12 +15,8 @@
                 <Image src="font://&#xf57e;"  class="fas t-36" />
             </TabStripItem>
             <TabStripItem>
-                <Label text="Indonesia" />
+                <Label text="Local (ID)" />
                 <Image src="font://&#xf276;"  class="fas t-36" />
-            </TabStripItem>
-            <TabStripItem>
-                <Label text="Maps" />
-                <Image src="font://&#xf5a0;"  class="fas t-36" />
             </TabStripItem>
             <TabStripItem>
                 <Label text="About" />
@@ -38,10 +34,6 @@
 
         <TabContentItem>
             <Frame defaultPage="local/local-page" />
-        </TabContentItem>
-
-        <TabContentItem>
-            <Frame defaultPage="maps/maps-page" />
         </TabContentItem>
 
         <TabContentItem>

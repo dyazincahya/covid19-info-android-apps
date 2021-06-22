@@ -1,29 +1,53 @@
 <Page
     loaded="onLoaded" 
-    navigatingTo="onNavigatingTo"  
+    navigatingTo="onNavigatingTo" 
+    actionBarHidden="true" 
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <ActionBar>
-        <Label text="Indonesia Report"></Label>
-        <ActionItem tap="onRefresh" text="Refresh This Page" android.position="popup" />
-    </ActionBar>
-
     <GridLayout rows="auto,*">
-    	<SearchBar row="0" id="searchBar" hint="Search by province name" clear="onClear" submit="onSubmit" />
-        <ListView row="1" items="{{ items }}" height="100%" class="list-group">
-            <ListView.itemTemplate>
-                <StackLayout>
-                    <Label text="{{ Provinsi }}" class="l-title" />
-                    <StackLayout orientation="horizontal" marginLeft="0">
-                        <Label text="{{ 'Positive ' + Kasus_Posi }}" class="l-confirm" />
-	                    <Label text="{{ 'Active ' + Kasus_akti }}" class="l-active" />
-	                </StackLayout>
-                    <StackLayout orientation="horizontal" marginLeft="0">
-	                    <Label text="{{ 'Deaths ' + Kasus_Meni }}" class="l-deaths" />
-	                    <Label text="{{ 'Recovered ' + Kasus_Semb }}" class="l-recovered" />
-	                </StackLayout>
-                </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
+		<GridLayout row="0" columns="10,*,auto" paddingTop="40" paddingBottom="17" backgroundColor="#FF1744">
+			<GridLayout col="1" rows="auto,auto">
+				<Label text="Local" class="ffUbuntu-bold" fontSize="24" row="0" paddingTop="15" color="#FFF" />
+				<Label text="All province of Indonesia" class="ffUbuntu-italic" fontSize="13" row="1" color="#FFF" />
+			</GridLayout>
+			<StackLayout col="2" padding="20" backgroundColor="#FFF" tap="onRefresh">
+				<Image src="font://&#xf2f1;" class="fas t-15" color="#FF1744" />
+			</StackLayout>
+		</GridLayout>
+
+        <GridLayout row="1" rows="auto,*">
+            <SearchBar row="0" id="searchBar" hint="Search by province name" clear="onClear" submit="onSubmit" />
+            <ListView row="1" items="{{ items }}" height="100%" class="list-group">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto,*">
+                        <Label text="{{ Index_Key + '.' }}" col="0" fontSize="24" />
+                        <StackLayout col="1">
+                            <Label text="{{ Provinsi }}" class="l-title ffStaatliches" />
+                            <GridLayout row="1" rows="auto,0,auto">
+                                <StackLayout row="0" width="100%" height="50" orientation="horizontal">
+                                    <Label text="{{ Kasus_Posi_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#f44336" width="{{ Kasus_Posi_pres + '%' }}" /> <!-- red -->
+                                    <Label text="{{ Kasus_akti_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#FFEB3B" width="{{ Kasus_akti_pres + '%' }}" /> <!-- yellow -->
+                                    <Label text="{{ Kasus_Semb_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#4CAF50" width="{{ Kasus_Semb_pres + '%' }}" /> <!-- green -->
+                                    <Label text="{{ Kasus_Meni_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#2196F3" width="{{ Kasus_Meni_pres + '%' }}" /> <!-- blue -->
+                                </StackLayout>
+                                <GridLayout row="2" rows="auto,auto" columns="auto,*,auto,*" marginLeft="10">
+                                    <Label row="0" col="0" backgroundColor="#f44336" width="10" height="10" borderRadius="50%" />
+                                    <Label row="0" col="1" text="{{ 'Positive ' + Kasus_Posi + ' (' + Kasus_Posi_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="1" col="0" backgroundColor="#FFEB3B" width="10" height="10" borderRadius="50%" />
+                                    <Label row="1" col="1" text="{{ 'Recovery ' + Kasus_akti + ' (' + Kasus_akti_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="0" col="2" backgroundColor="#4CAF50" width="10" height="10" borderRadius="50%" />
+                                    <Label row="0" col="3" text="{{ 'Recovered ' + Kasus_Semb + ' (' + Kasus_Semb_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="1" col="2" backgroundColor="#2196F3" width="10" height="10" borderRadius="50%" />
+                                    <Label row="1" col="3" text="{{ 'Deaths ' + Kasus_Meni + ' (' + Kasus_Meni_pres + '%)' }}" marginLeft="5" />
+                                </GridLayout>
+                            </GridLayout>
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </GridLayout>
     </GridLayout>
 </Page>

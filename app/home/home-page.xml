@@ -18,11 +18,11 @@
 		<GridLayout row="1" rows="auto,0,auto,10,auto,10,auto" marginTop="10" marginLeft="10" marginRight="10">
 			<Label text="GLOBAL" class="ffStaatliches" fontSize="24" row="0" paddingTop="15" color="#9E9E9E" horizontalAlignment="center" />
 			<Label text="{{ 'Total case positive, recovery, recovered and death is ' + all_total }}" fontSize="14" row="2" textWrap="true" color="#BDBDBD" horizontalAlignment="center" />
-			<StackLayout row="4" width="100%" height="30" orientation="horizontal">
-				<Label text="{{ confirmed_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#f44336" width="{{ confirmed_pres + '%' }}" /> <!-- red -->
-				<Label text="{{ active_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#FFEB3B" width="{{ active_pres + '%' }}" /> <!-- yellow -->
-				<Label text="{{ recovered_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#4CAF50" width="{{ recovered_pres + '%' }}" /> <!-- green -->
-				<Label text="{{ deaths_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#2196F3" width="{{ deaths_pres + '%' }}" /> <!-- blue -->
+			<StackLayout row="4" width="100%" height="70" orientation="horizontal">
+				<Label text="{{ confirmed_pres + '%' }}" paddingLeft="5" fontSize="14" color="#FFF" backgroundColor="#f44336" width="{{ confirmed_pres + '%' }}" /> <!-- red -->
+				<Label text="{{ active_pres + '%' }}" paddingLeft="5" fontSize="14" color="#333" backgroundColor="#FFEB3B" width="{{ active_pres + '%' }}" /> <!-- yellow -->
+				<Label text="{{ recovered_pres + '%' }}" paddingLeft="5" fontSize="14" color="#FFF" backgroundColor="#4CAF50" width="{{ recovered_pres + '%' }}" /> <!-- green -->
+				<Label text="{{ deaths_pres + '%' }}" paddingLeft="5" fontSize="14" color="#333" backgroundColor="#2196F3" width="{{ deaths_pres + '%' }}" /> <!-- blue -->
 			</StackLayout>
 			<GridLayout row="6" rows="auto,auto" columns="auto,*,auto,*" marginLeft="10">
 				<Label row="0" col="0" backgroundColor="#f44336" width="10" height="10" borderRadius="50%" />
@@ -42,11 +42,11 @@
 		<GridLayout row="2" rows="auto,0,auto,10,auto,10,auto" marginTop="10" marginLeft="10" marginRight="10">
 			<Label text="INDONESIA" class="ffStaatliches" fontSize="24" row="0" paddingTop="15" color="#9E9E9E" horizontalAlignment="center" />
 			<Label text="{{ 'Total case positive, recovery, recovered and death is ' + all_total_id }}" fontSize="14" row="2" textWrap="true" color="#BDBDBD" horizontalAlignment="center" />
-			<StackLayout row="4" width="100%" height="30" orientation="horizontal">
-				<Label text="{{ confirmed_pres_id + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#f44336" width="{{ confirmed_pres_id + '%' }}" /> <!-- red -->
-				<Label text="{{ active_pres_id + '%' }}" paddingLeft="5" color="#333" backgroundColor="#FFEB3B" width="{{ active_pres_id + '%' }}" /> <!-- yellow -->
-				<Label text="{{ recovered_pres_id + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#4CAF50" width="{{ recovered_pres_id + '%' }}" /> <!-- green -->
-				<Label text="{{ deaths_pres_id + '%' }}" paddingLeft="5" color="#333" backgroundColor="#2196F3" width="{{ deaths_pres_id + '%' }}" /> <!-- blue -->
+			<StackLayout row="4" width="100%" height="70" orientation="horizontal">
+				<Label text="{{ confirmed_pres_id + '%' }}" paddingLeft="5" fontSize="14" color="#FFF" backgroundColor="#f44336" width="{{ confirmed_pres_id + '%' }}" /> <!-- red -->
+				<Label text="{{ active_pres_id + '%' }}" paddingLeft="5" fontSize="14" color="#333" backgroundColor="#FFEB3B" width="{{ active_pres_id + '%' }}" /> <!-- yellow -->
+				<Label text="{{ recovered_pres_id + '%' }}" paddingLeft="5" fontSize="14" color="#FFF" backgroundColor="#4CAF50" width="{{ recovered_pres_id + '%' }}" /> <!-- green -->
+				<Label text="{{ deaths_pres_id + '%' }}" paddingLeft="5" fontSize="14" color="#333" backgroundColor="#2196F3" width="{{ deaths_pres_id + '%' }}" /> <!-- blue -->
 			</StackLayout>
 			<GridLayout row="6" rows="auto,auto" columns="auto,*,auto,*" marginLeft="10">
 				<Label row="0" col="0" backgroundColor="#f44336" width="10" height="10" borderRadius="50%" />

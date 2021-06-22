@@ -1,29 +1,53 @@
 <Page
     loaded="onLoaded" 
-    navigatingTo="onNavigatingTo"  
+    navigatingTo="onNavigatingTo" 
+    actionBarHidden="true" 
     xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <ActionBar>
-        <Label text="Global Report"></Label>
-    </ActionBar>
-
     <GridLayout rows="auto,*">
-    	<SearchBar row="0" id="searchBar" hint="Search by country name" clear="onClear" submit="onSubmit" />
-        <ListView row="1" items="{{ items }}" itemTap="onItemTap" height="100%" class="list-group">
-            <ListView.itemTemplate>
-                <StackLayout>
-                    <Label text="{{ Country_Region }}" class="l-title" textWrap="true" />
-                    <StackLayout orientation="horizontal" marginLeft="0">
-                        <Label text="{{ 'Positive ' + Confirmed }}" class="l-confirm" />
-	                    <Label text="{{ 'Active ' + Active }}" class="l-active" />
-	                </StackLayout>
-                    <StackLayout orientation="horizontal" marginLeft="0">
-	                    <Label text="{{ 'Deaths ' + Deaths }}" class="l-deaths" />
-	                    <Label text="{{ 'Recovered ' + Recovered }}" class="l-recovered" />
-	                </StackLayout>
-                    <Label text="{{ 'last update ' + Last_Update }}" class="l-las-update" />
-                </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
+		<GridLayout row="0" columns="10,*,auto" paddingTop="40" paddingBottom="17" backgroundColor="#FF1744">
+			<GridLayout col="1" rows="auto,auto">
+				<Label text="All Country" class="ffUbuntu-bold" fontSize="24" row="0" paddingTop="15" color="#FFF" />
+				<Label text="{{ 'last update ' + lastupdate }}" class="ffUbuntu-italic" fontSize="13" row="1" color="#FFF" />
+			</GridLayout>
+			<StackLayout col="2" padding="20" backgroundColor="#FFF" tap="onRefresh">
+				<Image src="font://&#xf2f1;" class="fas t-15" color="#FF1744" />
+			</StackLayout>
+		</GridLayout>
+
+        <GridLayout row="1" rows="auto,*">
+            <SearchBar row="0" id="searchBar" hint="Search by country name" clear="onClear" submit="onSubmit" />
+            <ListView row="1" items="{{ items }}" height="100%" class="list-group">
+                <ListView.itemTemplate>
+                    <GridLayout columns="auto,*">
+                        <Label text="{{ Index_Key + '.' }}" col="0" fontSize="24" />
+                        <StackLayout col="1">
+                            <Label text="{{ Country_Region }}" class="l-title ffStaatliches" textWrap="true" />
+                            <GridLayout row="1" rows="auto,0,auto">
+                                <StackLayout row="0" width="100%" height="50" orientation="horizontal">
+                                    <Label text="{{ Confirmed_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#f44336" width="{{ Confirmed_pres + '%' }}" /> <!-- red -->
+                                    <Label text="{{ Active_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#FFEB3B" width="{{ Active_pres + '%' }}" /> <!-- yellow -->
+                                    <Label text="{{ Recovered_pres + '%' }}" paddingLeft="5" color="#FFF" backgroundColor="#4CAF50" width="{{ Recovered_pres + '%' }}" /> <!-- green -->
+                                    <Label text="{{ Deaths_pres + '%' }}" paddingLeft="5" color="#333" backgroundColor="#2196F3" width="{{ Deaths_pres + '%' }}" /> <!-- blue -->
+                                </StackLayout>
+                                <GridLayout row="2" rows="auto,auto" columns="auto,*,auto,*" marginLeft="10">
+                                    <Label row="0" col="0" backgroundColor="#f44336" width="10" height="10" borderRadius="50%" />
+                                    <Label row="0" col="1" text="{{ 'Positive ' + Confirmed + ' (' + Confirmed_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="1" col="0" backgroundColor="#FFEB3B" width="10" height="10" borderRadius="50%" />
+                                    <Label row="1" col="1" text="{{ 'Recovery ' + Active + ' (' + Active_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="0" col="2" backgroundColor="#4CAF50" width="10" height="10" borderRadius="50%" />
+                                    <Label row="0" col="3" text="{{ 'Recovered ' + Recovered + ' (' + Recovered_pres + '%)' }}" marginLeft="5" />
+                                    
+                                    <Label row="1" col="2" backgroundColor="#2196F3" width="10" height="10" borderRadius="50%" />
+                                    <Label row="1" col="3" text="{{ 'Deaths ' + Deaths + ' (' + Deaths_pres + '%)' }}" marginLeft="5" />
+                                </GridLayout>
+                            </GridLayout>
+                        </StackLayout>
+                    </GridLayout>
+                </ListView.itemTemplate>
+            </ListView>
+        </GridLayout>
     </GridLayout>
 </Page>
